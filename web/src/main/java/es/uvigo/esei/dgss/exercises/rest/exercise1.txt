@@ -1,0 +1,48 @@
+Exercise 3: JAX-RS -> Task 1:
+
+Resource: Create an user (not authenticated).
+URI: /user
+Data: { UserObject }
+Method: POST
+
+Resource: Request another users friendship (from authenticated user to another user).
+URI: /api/user/{login_requested}/friendsrequests 
+Data: { login_requesting }
+Method: POST
+
+Resource: Get friendships requests (friendships made to the authenticated user).
+URI: /api/user/{login_requesting}/friends
+Method: GET
+
+Resource: Accept friendship request (made to the authenticated user).
+URI: /api/user/{login_requesting}/friendsrequest/{login_accept}   
+Data: { true }
+Method: PUT
+
+Resource: Get my wall posts (which are the authenticated user posts, as well as his friends posts). Results should include likes to each post.
+URI: /user/{login_requesting}/wall
+Method: GET
+
+Resource: Get my posts (the authenticated user posts).
+URI: /post/{login}
+Method: GET
+
+Resource: Like a given post (the authenticated user does the like).
+URI: /post/{idPost}/like/{login}
+Method: PUT
+
+Resource: Post normal text, links and photos (you can make three different functions. The author should be the authenticated user).
+URI: /post/link/{login_requesting}
+URI: /post/photo/{login_requesting}
+URI: /post/video/{login_requesting}
+Method: POST
+
+Resource: Delete a post (only posts authored by the authenticated user).
+URI: /post/{id}
+Method: DELETE
+
+Resource: Modify a post (only posts authored by the authenticated user can be edited).
+URI: /post/link/{id}
+URI: /post/photo/{id}
+URI: /post/video/{id}
+Method: PUT

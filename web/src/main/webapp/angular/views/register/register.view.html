@@ -1,0 +1,37 @@
+<div class="container h-100">
+    <div class="row justify-content-center h-100">
+        <div class="col-sm-8 align-self-center text-center">
+            <form class="form-signin" ng-submit="register()"> 	  
+                <h1 class="h1 mb-3">Register View</h1>
+                <div class="form-group row">
+                    <label for="login" class="col-sm-3 col-form-label">Login</label>
+                    <div class="col-sm-9">
+                        <input id="login" class="form-control" placeholder="Login" required ng-model="login">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" class="form-control" placeholder="Password" required ng-model="password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                        <input id="name" class="form-control" placeholder="Name" required ng-model="name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="picture" class="col-sm-3 col-form-label">Picture</label>
+                    <div class="col-sm-9">
+                        <input type="file" class="form-control-file" file-model="myFile" id="picture" onChange="angular.element(this).scope().change()" class="form-control" placeholder="Picture" required  ng-model="picture" >
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" >Register</button>
+            </form>
+            <div id="responseRegister" style="display: hide;">
+                {{response}}
+            </div>
+        </div>
+    </div>
+</div>

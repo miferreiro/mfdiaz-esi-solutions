@@ -1,0 +1,53 @@
+<div class="container h-100">
+    <h1 class="h1 mb-5 mt-2 text-center">WALL OF POSTS</h1>
+
+    <div class="row mb-3 justify-content-center">
+        <a role="button" class="btn btn-info col-3 ml-2 mr-2" ng-href="#/post/link">Create Link post</a>
+        <a role="button" class="btn btn-info col-3 ml-2 mr-2" ng-href="#/post/photo">Create Photo post</a>
+        <a role="button" class="btn btn-info col-3 ml-2 mr-2" ng-href="#/post/video">Create Video post</a>
+    </div>
+
+    <div id="response" style="display: hide;">
+        {{response}}
+    </div>
+
+    <table class="table table-hover justify-content-center text-center">
+        <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Author</th>
+              <th scope="col">Date</th>
+              <th scope="col">Post Type</th>
+              <th scope="col">Duration</th>              
+              <th scope="col">Content</th>
+              <th scope="col">URL</th>
+              <th scope="col">Nº likes</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="post in posts | orderBy: '-post.date'">
+                <th scope="row">{{post.id}}</th>
+                <th>{{post.user.login}}</th>
+                <td>{{post.date | date: "h:MM yyyy-MM-dd"}}</td>
+                <td ng-if="post.duration">Video</td>
+                <td ng-if="post.content">Photo</td>
+                <td ng-if="post.url">Link</td>
+                <td>{{post.duration}}</td>
+                <td>{{post.content}}</td>
+                <td>{{post.url}}</td>
+                <td>{{post.usersLike.length}}</td>
+                <td ng-if="!liked(post.usersLike, currentLogin)">                    
+                    <form ng-submit="like(post.id)">
+                       <button class="btn btn-danger" type="submit" >Like it!</button>
+                    </form>                                            
+                </td>
+                <td ng-if="liked(post.usersLike, currentLogin)">
+                    <form ng-submit="like(post.id)">
+                        <button class="btn btn-danger" type="submit"  disabled>Liked!</button>
+                    </form>                                            
+                </td>
+              </tr>
+          </tbody>
+    </table>
+</div>
